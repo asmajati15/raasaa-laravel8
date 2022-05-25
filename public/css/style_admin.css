@@ -1,0 +1,174 @@
+/*Font*/
+@font-face {
+    font-family: "Ibarra";
+    src: url("font/IbarraRealNova.ttf") format("truetype");
+}
+
+body {
+    font-family: "Ibarra", serif;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeInUp {
+    from {
+        transform: translate3d(0, 40px, 0);
+    }
+
+    to {
+        transform: translate3d(0, 0, 0);
+        opacity: 1;
+    }
+}
+
+.animated {
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+}
+
+.animatedFadeInUp {
+    opacity: 0;
+}
+
+.fadeInUp {
+    opacity: 0;
+    animation-name: fadeInUp;
+    -webkit-animation-name: fadeInUp;
+}
+
+/* Main Menu */
+.navbar {
+    align-content: center;
+    background-color: rgba(0, 0, 20);
+}
+
+.navbar-dark .navbar-toggler {
+    color: rgba(218, 165, 32, 0.55);
+    border-color: rgba(218, 165, 32, 0.1);
+}
+
+.navbar-dark .navbar-nav .nav-link {
+    color: rgba(218, 165, 32, 0.55);
+    font-weight: bold;
+}
+.navbar-dark .navbar-nav .nav-link:hover,
+.navbar-dark .navbar-nav .nav-link:focus {
+    color: rgba(218, 165, 32, 1);
+    font-weight: bold;
+}
+
+.navbar-dark .navbar-nav .show > .nav-link,
+.navbar-dark .navbar-nav .nav-link.active {
+    color: rgba(218, 165, 32);
+    font-weight: bold;
+}
+
+.nav-link {
+    outline: none;
+}
+
+#navbar-link::after {
+    content: "";
+    display: block;
+    width: 0;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.5);
+    transition: width 0.3s;
+}
+
+#navbar-link:hover::after {
+    width: 100%;
+    transition: width 0.3s;
+}
+
+.body-admin footer {
+    height: 50px;
+    bottom: 0;
+    width: 100%;
+}
+
+.body-admin .card img {
+    width: 100%;
+    height: 266px;
+    object-fit: cover;
+}
+
+.body-admin .card-body span {
+    color: goldenrod;
+}
+
+.body-admin .card-body {
+    vertical-align: middle;
+}
+
+.body-admin .links {
+    color: rgba(0, 0, 20);
+    text-decoration: none;
+}
+
+.body-admin .links:hover {
+    color: rgba(0, 0, 20);
+}
+
+.body-admin .card-body {
+    vertical-align: middle;
+}
+
+/* Create Menu */
+.body-admin .hides {
+    display: none;
+}
+
+.body-admin .1 {
+    display: block;
+}
+
+/* Detail Menu */
+.body-admin .detail-menu {
+    background-color: var(--bg18);
+}
+
+.body-admin .back-menu {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+.body-admin .back-menu:hover {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    border-bottom: 2px solid goldenrod;
+}
+
+.body-admin .gambar-menu img {
+    transition: 0.3s;
+    border-radius: 60px;
+    width: 300px;
+    height: 300px;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    object-position: center;
+}
+
+.body-admin .gambar-menu img:hover {
+    transition: 0.3s;
+    border-radius: 20px;
+    width: 300px;
+    height: 300px;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    object-position: center;
+}
