@@ -28,6 +28,9 @@ Edit Kategori Menu
 
         <input type="hidden" id="slug" name="slug" required value="{{ old('slug', $type->slug) }}">
 
+        @if ($type->getAttribute('filters_id') == '3')
+        <input type="hidden" name="filters_id" required value="{{ old('filters_id', $type->filters_id) }}">
+        @else
         <div class="row mb-3">
           <label for="filters_id" class="col-sm-2 col-form-label">Jenis</label>
           <div class="col-sm-10">
@@ -51,6 +54,7 @@ Edit Kategori Menu
             @enderror
           </div>
         </div>
+        @endif
         <button type="submit" class="btn btn-primary">Edit Kategori Menu</button>
         <a href="{{url ('web-raasaa-admin/type')}}">
           <p class="d-inline mx-2">Kembali ke kategori</p>
