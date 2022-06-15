@@ -1,58 +1,62 @@
 @extends('layouts/admin')
 
 @section('title')
-Pendaftaran User
+  Pendaftaran User
 @endsection
 
 @section('content')
-<div class="container">
-  <div class="row pb-4">
-    <div class="col-lg-8">
-      <h2 class="my-4">Form Pendaftaran User</h2>
-
+  <div class="card mb-4">
+    <div class="card-header pb-0">
+      <h6>Form Pendaftaran Admin</h6>
+    </div>
+    <div class="card-body px-0 pt-0 pb-2 ps-4">
       <form action="/web-raasaa-admin/user" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="row mb-3">
           <label for="name" class="col-sm-2 col-form-label">Nama</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" autofocus required value="{{ old('name') }}">
+            <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" autofocus
+              required value="{{ old('name') }}">
             @error('name')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
             @enderror
           </div>
         </div>
         <div class="row mb-3">
           <label for="username" class="col-sm-2 col-form-label">Username</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username" required value="{{ old('username') }}">
+            <input type="text" class="form-control @error('username') is-invalid @enderror" id="username" name="username"
+              required value="{{ old('username') }}">
             @error('username')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
             @enderror
           </div>
         </div>
         <div class="row mb-3">
           <label for="email" class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-10">
-            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" required value="{{ old('email') }}">
+            <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" name="email" required
+              value="{{ old('email') }}">
             @error('email')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
             @enderror
           </div>
         </div>
         <div class="row mb-3">
           <label for="password" class="col-sm-2 col-form-label">Password</label>
           <div class="col-sm-10">
-            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required value="{{ old('password') }}">
+            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password"
+              name="password" required value="{{ old('password') }}">
             @error('password')
-            <div class="invalid-feedback">
-              {{ $message }}
-            </div>
+              <div class="invalid-feedback">
+                {{ $message }}
+              </div>
             @enderror
           </div>
         </div>
@@ -72,11 +76,10 @@ Pendaftaran User
           </div>
         </div> --}}
         <button type="submit" class="btn btn-primary">Daftar</button>
-        <a href="{{url ('web-raasaa-admin/user')}}">
+        <a href="{{ url('web-raasaa-admin/user') }}">
           <p class="d-inline mx-2">Kembali ke list user</p>
         </a>
       </form>
     </div>
   </div>
-</div>
 @endsection

@@ -1,111 +1,147 @@
 @extends('layouts/admin')
 
 @section('title')
-Full Menu
+  Full Menu
 @endsection
 
 @section('content')
-<div class="container text-center bg-off-white fix mt-5">
-    @if(session()->has('success'))
+  @if (session()->has('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-        {{ session('success') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      {{ session('success') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    @endif
-    @if(session()->has('deleted'))
+  @endif
+  @if (session()->has('deleted'))
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{ session('deleted') }}
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      {{ session('deleted') }}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
-    @endif
-    <div class="row mt-3">
-        <div class="col">
-            <a href="/web-raasaa-admin/menu/create" class="btn btn-primary">Tambah Menu</a>
-        </div>
-        <div class="row mt-3">
-            <div class="col">
-            </div>
-        </div>
+  @endif
+  <div class="row my-3">
+    <div class="col pb-3">
+      <a href="/web-raasaa-admin/menu/create" class="btn btn-primary">Tambah Menu</a>
     </div>
+  </div>
 
-    <div class="food-menu py-3 border-top">
-        <h2>Menu Spesial</h2>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+  <div class="card mb-4">
+    <div class="card-header pb-0">
+      <h6>Menu Spesial</h6>
+    </div>
+    <div class="card-body px-0 pt-0 pb-2">
+      <div class="table-responsive p-0">
+        <table class="table align-items-center mb-0">
+          <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gambar</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kategori Menu</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Harga</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ketersediaan</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
             @foreach ($special as $special)
-            @if ($special->types->getAttribute('filters_id') == '3')
-            <div class="col">
-                <div class="card h-100 mx-auto" style="width: 15rem;">
-                    <a class="links" href="menu/{{ $special->slug }}">
-                        <img src="{{asset ('storage/' . $special->gambar)}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                {{ $special->nama }}
-                            </h5>
-                            <h5 class="card-text">
-                                <span>{{ $special->harga }}</span>
-                            </h5>
-                            <p class="ready">
-                                <i>{{ $special->availabilities->nama }}</i>
-                            </p>
-                            <a href="/web-raasaa-admin/menu/{{ $special->slug }}/edit" class="btn btn-success">
-                                <i class="bi bi-pencil-fill" style="font-size: 1rem; color:white"></i>
-                                Edit
-                            </a>
-                            <form action="/web-raasaa-admin/menu/{{ $special->slug }}" method="POST" class="d-inline">
-                                @method('delete')
-                                @csrf
-                                <button class="btn btn-danger border-0" onclick="return confirm('Apakah anda yakin?')">
-                                    <span class="bi bi-trash-fill" style="font-size: 1rem; color:white"></span>
-                                    Hapus
-                                </button>
-                            </form>
-                        </div>
+              @if ($special->types->getAttribute('filters_id') == '3')
+                <tr>
+                  <td class="align-middle ps-4">
+                    <img src="{{ asset('storage/' . $special->gambar) }}" class="avatar avatar-lg" alt="...">
+                  </td>
+                  <td class="align-middle">
+                    <p class="text-xs font-weight-bold mb-0">{{ $special->nama }}</p>
+                  </td>
+                  <td class="align-middle">
+                    <span class="badge badge-sm bg-gradient-primary">{{ $special->types->nama }}</span>
+                  </td>
+                  <td class="align-middle">
+                    <p class="text-xs font-weight-bold mb-0">{{ $special->harga }}</p>
+                  </td>
+                  <td class="align-middle">
+                    <p class="text-xs font-weight-bold mb-0">{{ $special->availabilities->nama }}</p>
+                  </td>
+                  <td class="align-middle">
+                    <a href="menu/{{ $special->slug }}" class="btn btn-info">
+                      <i class="fas fa-eye"></i>
                     </a>
-                </div>
-            </div>
-            @endif
+                    <a href="/web-raasaa-admin/menu/{{ $special->slug }}/edit" class="btn btn-success">
+                      <i class="bi bi-pencil-fill" style="font-size: 1rem; color:white"></i>
+                    </a>
+                    <form action="/web-raasaa-admin/menu/{{ $special->slug }}" method="POST" class="d-inline">
+                      @method('delete')
+                      @csrf
+                      <button class="btn btn-danger border-0" onclick="return confirm('Apakah anda yakin?')">
+                        <span class="bi bi-trash-fill" style="font-size: 1rem; color:white"></span>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              @endif
             @endforeach
-        </div>
+          </tbody>
+        </table>
+      </div>
     </div>
+  </div>
 
-    <div class="food-menu pt-3 border-top">
-        <h2>Menu Reguler</h2>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
-            @foreach ($menu as $menu)
-            @if ($menu->types->getAttribute('filters_id') != '3')
-            <div class="col">
-                <div class="card h-100 mx-auto" style="width: 15rem;">
-                    <a class="links" href="menu/{{ $menu->slug }}">
-                        <img src="{{asset ('storage/' . $menu->gambar)}}" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">
-                                {{ $menu->nama }}
-                            </h5>
-                            <h5 class="card-text">
-                                <span>{{ $menu->harga }}</span>
-                            </h5>
-                            <p class="ready">
-                                <i>{{ $menu->availabilities->nama }}</i>
-                            </p>
-                            <a href="/web-raasaa-admin/menu/{{ $menu->slug }}/edit" class="btn btn-success">
-                                <i class="bi bi-pencil-fill" style="font-size: 1rem; color:white"></i>
-                                Edit
-                            </a>
-                            <form action="/web-raasaa-admin/menu/{{ $menu->slug }}" method="POST" class="d-inline">
-                                @method('delete')
-                                @csrf
-                                <button class="btn btn-danger border-0" onclick="return confirm('Apakah anda yakin?')">
-                                    <i class="bi bi-trash-fill" style="font-size: 1rem; color:white"></i>
-                                    Hapus
-                                </button>
-                            </form>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            @endif
-            @endforeach
-        </div>
+  <div class="card mb-4">
+    <div class="card-header pb-0">
+      <h6>Menu Reguler</h6>
     </div>
-</div>
+    <div class="card-body px-0 pt-0 pb-2">
+      <div class="table-responsive p-0">
+        <table class="table align-items-center mb-0">
+          <thead>
+            <tr>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Gambar</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Nama</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Kategori Menu</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Harga</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Ketersediaan</th>
+              <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            @foreach ($menu as $menu)
+              @if ($menu->types->getAttribute('filters_id') != '3')
+                <tr>
+                  <td class="align-middle ps-4">
+                    <img src="{{ asset('storage/' . $menu->gambar) }}" class="avatar avatar-lg" alt="...">
+                  </td>
+                  <td class="align-middle">
+                    <p class="text-xs font-weight-bold mb-0">{{ $menu->nama }}</p>
+                  </td>
+                  <td class="align-middle">
+                    <span class="badge badge-sm bg-gradient-primary">{{ $menu->types->nama }}</span>
+                  </td>
+                  <td class="align-middle">
+                    <p class="text-xs font-weight-bold mb-0">{{ $menu->harga }}</p>
+                  </td>
+                  <td class="align-middle">
+                    <p class="text-xs font-weight-bold mb-0">{{ $menu->availabilities->nama }}</p>
+                  </td>
+                  <td class="align-middle">
+                    <a href="menu/{{ $menu->slug }}" class="btn btn-info">
+                      <i class="fas fa-eye"></i>
+                    </a>
+                    <a href="/web-raasaa-admin/menu/{{ $menu->slug }}/edit" class="btn btn-success">
+                      <i class="bi bi-pencil-fill" style="font-size: 1rem; color:white"></i>
+                    </a>
+                    <form action="/web-raasaa-admin/menu/{{ $menu->slug }}" method="POST" class="d-inline">
+                      @method('delete')
+                      @csrf
+                      <button class="btn btn-danger border-0" onclick="return confirm('Apakah anda yakin?')">
+                        <span class="bi bi-trash-fill" style="font-size: 1rem; color:white"></span>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+              @endif
+            @endforeach
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  </div>
 @endsection

@@ -39,6 +39,8 @@
 
   <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  {{-- Bootstrap Icons --}}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
   <!-- Nucleo Icons -->
   <link href="{{ asset('css/nucleo-icons.css') }}" rel="stylesheet" />
   <link href="{{ asset('css/nucleo-svg.css') }}" rel="stylesheet" />
@@ -67,48 +69,53 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('web-raasaa-admin') ? 'active' : '' }}" href="{{ url('web-raasaa-admin') }}">
+          <a class="nav-link {{ Request::is('web-raasaa-admin') ? 'active' : '' }}"
+            href="{{ url('web-raasaa-admin') }}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
+              <i class="ni ni-tv-2 text-info text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Dashboard</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('web-raasaa-admin/menu*') ? 'active' : '' }}" href="{{ url('web-raasaa-admin/menu') }}">
+          <a class="nav-link {{ Request::is('web-raasaa-admin/menu*') ? 'active' : '' }}"
+            href="{{ url('web-raasaa-admin/menu') }}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
               <i class="ni ni-bullet-list-67 text-primary text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Menu</span>
+            <span class="nav-link-text ms-1">Full Menu</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('web-raasaa-admin/type*') ? 'active' : '' }}" href="{{ url('web-raasaa-admin/type') }}">
+          <a class="nav-link {{ Request::is('web-raasaa-admin/type*') ? 'active' : '' }}"
+            href="{{ url('web-raasaa-admin/type') }}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-tag text-primary text-sm opacity-10"></i>
+              <i class="ni ni-tag text-danger text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Kategori Menu</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('web-raasaa-admin/slide*') ? 'active' : '' }}" href="{{ url('web-raasaa-admin/slide') }}">
+          <a class="nav-link {{ Request::is('web-raasaa-admin/slide*') ? 'active' : '' }}"
+            href="{{ url('web-raasaa-admin/slide') }}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-button-play text-primary text-sm opacity-10"></i>
+              <i class="ni ni-button-play text-success text-sm opacity-10"></i>
             </div>
             <span class="nav-link-text ms-1">Slider Menu</span>
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{ Request::is('web-raasaa-admin/user*') ? 'active' : '' }}" href="{{ url('web-raasaa-admin/user') }}">
+          <a class="nav-link {{ Request::is('web-raasaa-admin/user*') ? 'active' : '' }}"
+            href="{{ url('web-raasaa-admin/user') }}">
             <div
               class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-              <i class="ni ni-single-02 text-primary text-sm opacity-10"></i>
+              <i class="ni ni-single-02 text-warning text-sm opacity-10"></i>
             </div>
-            <span class="nav-link-text ms-1">Daftar User</span>
+            <span class="nav-link-text ms-1">Daftar Admin</span>
           </a>
         </li>
       </ul>
@@ -131,7 +138,7 @@
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
           </div>
           <ul class="navbar-nav  justify-content-end">
-            <li class="nav-item d-flex align-items-center">
+            {{-- <li class="nav-item d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white font-weight-bold px-0">
                 <form action="{{ route('logout.admin') }}" method="POST">
                   @csrf
@@ -141,6 +148,35 @@
                   </button>
                 </form>
               </a>
+            </li> --}}
+            <li class="nav-item dropdown pe-2 d-flex align-items-center">
+              <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+                aria-expanded="false">
+                <i class="fa fa-user cursor-pointer"></i>
+              </a>
+              <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
+                <li class="mb-2">
+                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                    <div class="d-flex py-1">
+                      <div class="my-auto">
+                        <i class="fa fa-user avatar avatar-sm  me-3 " style="color: black"></i>
+                      </div>
+                      <div class="d-flex flex-column justify-content-center">
+                        <h6 class="text-sm font-weight-normal mb-1">
+                          <span class="font-weight-bold">{{ auth()->user()->name }}</span>
+                        </h6>
+                        <form action="{{ route('logout.admin') }}" method="POST">
+                          @csrf
+                          <button type="submit" class="btn btn-danger">
+                            Log Out
+                            <i class="bi bi-box-arrow-right" style="font-size: 1rem; color: white;"></i>
+                          </button>
+                        </form>
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
               <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
@@ -171,28 +207,8 @@
                 <script>
                   document.write(new Date().getFullYear())
                 </script>,
-                made with <i class="fa fa-heart"></i> by
-                <a href="https://www.creative-tim.com" class="font-weight-bold" target="_blank">Creative Tim</a>
-                for a better web.
+                AMNV x KARUNONIH
               </div>
-            </div>
-            <div class="col-lg-6">
-              <ul class="nav nav-footer justify-content-center justify-content-lg-end">
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com" class="nav-link text-muted" target="_blank">Creative Tim</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/presentation" class="nav-link text-muted" target="_blank">About
-                    Us</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/blog" class="nav-link text-muted" target="_blank">Blog</a>
-                </li>
-                <li class="nav-item">
-                  <a href="https://www.creative-tim.com/license" class="nav-link pe-0 text-muted"
-                    target="_blank">License</a>
-                </li>
-              </ul>
             </div>
           </div>
         </div>
