@@ -1,7 +1,7 @@
 @extends('layouts/admin')
 
 @section('title')
-  List User
+  Daftar Admin
 @endsection
 
 @section('content')
