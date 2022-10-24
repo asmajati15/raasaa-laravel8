@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Routes Admin
-Route::get('web-raasaa-admin', [AdminController::class, 'index'])->name('dashboard.admin')->middleware('auth');
 
 Route::get('web-raasaa-login', [AdminController::class, 'login'])->name('login.admin')->middleware('guest');
 Route::post('login', [AdminController::class, 'authenticate']);
@@ -34,21 +33,32 @@ Route::post('web-raasaa-reset-password', [ForgotPasswordController::class, 'subm
 
 Route::post('web-raasaa-logout', [AdminController::class, 'logout'])->name('logout.admin')->middleware('auth');
 
-Route::get('/web-raasaa-admin/menu/checkSlug', [DashboardMenuController::class, 'checkSlug'])->middleware('auth');
-Route::resource('web-raasaa-admin/menu', DashboardMenuController::class)->middleware('auth');
+Route::prefix('web-raasaa-admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('admin.index')->middleware('auth');
+    
+    Route::get('/menu/checkSlug', [DashboardMenuController::class, 'checkSlug'])->middleware('auth');
+    Route::resource('/menu', DashboardMenuController::class)->middleware('auth');
+    
+    Route::get('/type/checkSlug', [DashboardTypeController::class, 'checkSlug'])->middleware('auth');
+    Route::resource('/type', DashboardTypeController::class)->except('show')->middleware('auth');
+    /*Route::prefix('/type')->group(function () {
+        Route::get('/', [DashboardTypeController::class, 'index'])->name('type.index')->middleware('auth');
+        Route::post('/store', [DashboardTypeController::class, 'store'])->name('type.store')->middleware('auth');
+        Route::post('/update/{slug}', [DashboardTypeController::class, 'update'])->name('type.update')->middleware('auth');
+        Route::get('/delete/{slug}', [DashboardTypeController::class, 'destroy'])->name('type.delete')->middleware('auth');
+        Route::get('/checkSlug', [DashboardTypeController::class, 'checkSlug'])->middleware('auth');
+    });*/
 
-Route::get('/web-raasaa-admin/type/checkSlug', [DashboardTypeController::class, 'checkSlug'])->middleware('auth');
-Route::resource('web-raasaa-admin/type', DashboardTypeController::class)->except('show')->middleware('auth');
-
-Route::get('/web-raasaa-admin/slider/checkSlug', [DashboardSlideController::class, 'checkSlug'])->middleware('auth');
-Route::resource('web-raasaa-admin/slide', DashboardSlideController::class)->except('create', 'store', 'show', 'destroy')->middleware('auth');
-
-// Administrator
-// Route::get('signup', [AdminController::class, 'signup'])->middleware('administrator');
-// Route::post('signup', [AdminController::class, 'store']);
-Route::resource('web-raasaa-admin/user', AdministratorController::class)->except('show', 'edit', 'update')->middleware('administrator');
-
-Route::resource('web-raasaa-admin/order', OrderController::class)->middleware('auth');
+    Route::get('/slider/checkSlug', [DashboardSlideController::class, 'checkSlug'])->middleware('auth');
+    Route::resource('/slide', DashboardSlideController::class)->except('create', 'store', 'show', 'destroy')->middleware('auth');
+    
+    // Administrator
+    // Route::get('signup', [AdminController::class, 'signup'])->middleware('administrator');
+    // Route::post('signup', [AdminController::class, 'store']);
+    Route::resource('/user', AdministratorController::class)->except('show', 'edit', 'update')->middleware('administrator');
+    
+    Route::resource('/order', OrderController::class)->middleware('auth');
+});
 
 // Routes User
 Route::get('/', [HomeController::class, 'index']);

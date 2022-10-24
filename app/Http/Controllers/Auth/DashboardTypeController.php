@@ -14,13 +14,16 @@ class DashboardTypeController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \App\Models\Type  $type
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Type $type)
     {
         return view('admin/kategori', [
             'specials' => Type::with('filters')->latest()->get(),
             'types' => Type::with('filters')->latest()->get(),
+            'filter' => Filter::get(),
+            // 'type' => $type,
         ]);
     }
 
@@ -31,9 +34,9 @@ class DashboardTypeController extends Controller
      */
     public function create()
     {
-        return view('admin/create_type', [
-            'filter' => Filter::get()
-        ]);
+        // return view('admin/create_type', [
+        //     'filter' => Filter::get()
+        // ]);
     }
 
     /**
@@ -63,7 +66,7 @@ class DashboardTypeController extends Controller
      */
     public function show(Type $type)
     {
-        return $type;
+        // return $type;
     }
 
     /**
@@ -74,6 +77,7 @@ class DashboardTypeController extends Controller
      */
     public function edit(Type $type)
     {
+        dd($type);
         return view('admin/edit_type', [
             'type' => $type,
             'filter' => Filter::get()
