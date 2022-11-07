@@ -54,7 +54,7 @@
         </a>
       </div>
       <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
-        <a class="links" href="{{ url('web-raasaa-admin/slide') }}">
+        {{-- <a class="links" href="{{ url('web-raasaa-admin/slide') }}">
           <div class="card">
             <div class="card-body p-3">
               <div class="row">
@@ -73,10 +73,31 @@
                 </div>
               </div>
             </div>
-        </a>
+        </a> --}}
+        <a class="links" href="{{ url('web-raasaa-admin/user') }}">
+          <div class="card">
+            <div class="card-body p-3">
+              <div class="row">
+                <div class="col-8">
+                  <div class="numbers">
+                    <h5 class="mb-0 text-uppercase font-weight-bolder">Daftar Admin</h5>
+                    <p class="mb-0">
+                      Akun admin yang memiliki akses
+                    </p>
+                  </div>
+                </div>
+                <div class="col-4 text-end">
+                  <div class="icon icon-shape bg-gradient-warning shadow-warning text-center rounded-circle">
+                    <i class="fa fa-user text-lg opacity-10" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>   
       </div>
     </div>
-    <div class="col-xl-3 col-sm-6">
+    {{-- <div class="col-xl-3 col-sm-6">
       <a class="links" href="{{ url('web-raasaa-admin/user') }}">
         <div class="card">
           <div class="card-body p-3">
@@ -98,7 +119,7 @@
           </div>
         </div>
       </a>
-    </div>
+    </div> --}}
   </div>
   <div class="row">
     <div class="col pt-5">

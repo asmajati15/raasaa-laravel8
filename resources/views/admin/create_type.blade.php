@@ -32,13 +32,13 @@
               name="filters_id">
               <option value="" hidden>--Pilih Jenis Menu--</option>
               @foreach ($filter as $filter)
-                @if ($filter->getAttribute('id') != '3')
-                  @if (old('filters_id') == $filter->id)
+                {{-- @if ($filter->getAttribute('id') != '3')
+                  @if (old('filters_id') == $filter->id) --}}
                     <option value="{{ $filter->id }}" selected>{{ $filter->slug }}</option>
                   @else
                     <option value="{{ $filter->id }}">{{ $filter->slug }}</option>
-                  @endif
-                @endif
+                  {{-- @endif --}}
+                {{-- @endif --}}
               @endforeach
             </select>
             @error('filters_id')

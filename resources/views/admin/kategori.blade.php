@@ -28,7 +28,7 @@
       </div>
     </div>
   </div>
-  <div class="card mb-4">
+  {{-- <div class="card mb-4">
     <div class="card-header pb-0">
       <h6>Menu Spesial</h6>
     </div>
@@ -68,10 +68,10 @@
         </table>
       </div>
     </div>
-  </div>
+  </div> --}}
   <div class="card mb-4">
     <div class="card-header pb-0">
-      <h6>Menu Reguler</h6>
+      <h6>Semua Menu</h6>
     </div>
     <div class="card-body px-0 pt-0 pb-2">
       <div class="table-responsive p-0">
@@ -86,7 +86,7 @@
           </thead>
           <tbody>
             @foreach ($types as $type)
-              @if ($type->getAttribute('filters_id') != '3')
+              {{-- @if ($type->getAttribute('filters_id') != '3') --}}
                 <tr>
                   <!-- <td class="align-middle ps-4">
                               <p class="text-xs font-weight-bold mb-0">{{ $loop->iteration }}</p>
@@ -94,15 +94,22 @@
                   <td>
                     <p class="text-xs font-weight-bold mb-0 ps-4">{{ $type->nama }}</p>
                   </td>
-                  @if ($type->getAttribute('filters_id') == '1')
-                    <td class="align-middle">
-                      <span class="badge badge-sm bg-gradient-info">{{ $type->filters->slug }}</span>
-                    </td>
-                  @else
-                    <td class="align-middle">
-                      <span class="badge badge-sm bg-gradient-danger">{{ $type->filters->slug }}</span>
-                    </td>
-                  @endif
+                  @switch($type->getAttribute('filters_id'))
+                      @case(1)    
+                        <td class="align-middle">
+                          <span class="badge badge-sm bg-gradient-info">{{ $type->filters->slug }}</span>
+                        </td>
+                        @break
+                      @case(2)
+                        <td class="align-middle">
+                          <span class="badge badge-sm bg-gradient-danger">{{ $type->filters->slug }}</span>
+                        </td>
+                          @break
+                      @default
+                        <td class="align-middle">
+                          <span class="badge badge-sm bg-gradient-primary">{{ $type->filters->slug }}</span>
+                        </td> 
+                  @endswitch
                   <td class="align-middle">
                     <a href="/web-raasaa-admin/type/{{ $type->slug }}/edit" class="btn btn-success">
                       <p class="text-xs font-weight-bold mb-0">Edit</p>
@@ -122,7 +129,7 @@
                     </form>
                   </td>
                 </tr>
-              @endif
+              {{-- @endif --}}
             @endforeach
           </tbody>
         </table>
@@ -161,13 +168,13 @@
                   required name="filters_id">
                   <option value="" hidden>--Pilih Jenis Menu--</option>
                   @foreach ($filter as $filter)
-                    @if ($filter->getAttribute('id') != '3')
+                    {{-- @if ($filter->getAttribute('id') != '3') --}}
                       @if (old('filters_id') == $filter->id)
                         <option value="{{ $filter->id }}" selected>{{ $filter->slug }}</option>
                       @else
                         <option value="{{ $filter->id }}">{{ $filter->slug }}</option>
                       @endif
-                    @endif
+                    {{-- @endif --}}
                   @endforeach
                 </select>
                 @error('filters_id')

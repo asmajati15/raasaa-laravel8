@@ -23,7 +23,7 @@
     </div>
   </div>
 
-  <div class="card mb-4">
+  {{-- <div class="card mb-4">
     <div class="card-header pb-0">
       <h6>Menu Spesial</h6>
     </div>
@@ -81,7 +81,7 @@
         </table>
       </div>
     </div>
-  </div>
+  </div> --}}
 
   <div class="card mb-4">
     <div class="card-header pb-0">
@@ -102,7 +102,7 @@
           </thead>
           <tbody>
             @foreach ($menu as $menu)
-              @if ($menu->types->getAttribute('filters_id') != '3')
+              {{-- @if ($menu->types->getAttribute('filters_id') != '3') --}}
                 <tr>
                   <td class="align-middle ps-4">
                     <img src="{{ asset('storage/' . $menu->gambar) }}" class="avatar avatar-lg" alt="...">
@@ -135,7 +135,7 @@
                     </form>
                   </td>
                 </tr>
-              @endif
+              {{-- @endif --}}
             @endforeach
           </tbody>
         </table>

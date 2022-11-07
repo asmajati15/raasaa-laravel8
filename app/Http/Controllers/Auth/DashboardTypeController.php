@@ -77,7 +77,7 @@ class DashboardTypeController extends Controller
      */
     public function edit(Type $type)
     {
-        dd($type);
+        // dd($type);
         return view('admin/edit_type', [
             'type' => $type,
             'filter' => Filter::get()

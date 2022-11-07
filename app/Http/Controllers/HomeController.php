@@ -14,10 +14,12 @@ class HomeController extends Controller
         return view('users/home', [
             // "menu" => Menu::latest()->get()
             "menu" => Menu::with('availabilities', 'filters', 'types')->orderBy('nama', 'asc')->get(),
-            "highlights" => Menu::with('filters', 'types')->orderBy('nama', 'asc')->get(),
-            "slides" => Slide::latest()->get(),
-            "headings" => Type::with('filters')->get(),
-            "categories" => Type::latest()->get(),
+            "menu1" => Menu::with('availabilities', 'filters', 'types')->orderBy('nama', 'asc')->get(),
+            "menu2" => Menu::with('availabilities', 'filters', 'types')->orderBy('nama', 'asc')->get(),
+            // "highlights" => Menu::with('filters', 'types')->orderBy('nama', 'asc')->get(),
+            // "slides" => Slide::latest()->get(),
+            // "headings" => Type::with('filters')->get(),
+            // "categories" => Type::latest()->get(),
             // "firsts" => Type::with('filters')->get(),
             // "seconds" => Type::with('filters')->get(),
             // "headings" => Type::with('filters')->get(),

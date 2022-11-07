@@ -49,8 +49,8 @@ Route::prefix('web-raasaa-admin')->name('admin.')->group(function () {
         Route::get('/checkSlug', [DashboardTypeController::class, 'checkSlug'])->middleware('auth');
     });*/
 
-    Route::get('/slider/checkSlug', [DashboardSlideController::class, 'checkSlug'])->middleware('auth');
-    Route::resource('/slide', DashboardSlideController::class)->except('create', 'store', 'show', 'destroy')->middleware('auth');
+    // Route::get('/slider/checkSlug', [DashboardSlideController::class, 'checkSlug'])->middleware('auth');
+    // Route::resource('/slide', DashboardSlideController::class)->except('create', 'store', 'show', 'destroy')->middleware('auth');
     
     // Administrator
     // Route::get('signup', [AdminController::class, 'signup'])->middleware('administrator');

@@ -98,7 +98,7 @@
             <span class="nav-link-text ms-1">Kategori Menu</span>
           </a>
         </li>
-        <li class="nav-item">
+        {{-- <li class="nav-item">
           <a class="nav-link {{ Request::is('web-raasaa-admin/slide*') ? 'active' : '' }}"
             href="{{ url('web-raasaa-admin/slide') }}">
             <div
@@ -107,7 +107,7 @@
             </div>
             <span class="nav-link-text ms-1">Slider Menu</span>
           </a>
-        </li>
+        </li> --}}
         <li class="nav-item">
           <a class="nav-link {{ Request::is('web-raasaa-admin/user*') ? 'active' : '' }}"
             href="{{ url('web-raasaa-admin/user') }}">
