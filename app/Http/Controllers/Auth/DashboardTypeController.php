@@ -23,6 +23,7 @@ class DashboardTypeController extends Controller
             'specials' => Type::with('filters')->latest()->get(),
             'types' => Type::with('filters')->latest()->get(),
             'filter' => Filter::get(),
+            'filters' => Filter::get(),
             // 'type' => $type,
         ]);
     }

@@ -22,7 +22,9 @@ class DashboardMenuController extends Controller
     {
         return view('admin/menu', [
             'menu' => Menu::with('types', 'availabilities')->orderBy('nama', 'asc')->get(),
-            'special' => Menu::with('types', 'availabilities')->orderBy('nama', 'asc')->get()
+            'special' => Menu::with('types', 'availabilities')->orderBy('nama', 'asc')->get(),
+            'type' => Type::get(),
+            'availability' => Availability::get()
         ]);
     }
 

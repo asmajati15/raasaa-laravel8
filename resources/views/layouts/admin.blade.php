@@ -16,28 +16,27 @@
 <html lang="en">
 
 <head>
-  {{-- JQuery --}}
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  {{-- My JS --}}
-  <script src="{{ asset('/js/app.js') }}" defer></script>
+
+  <title>Raasaa Admin - @yield('title')</title>
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  {{-- <link rel="apple-touch-icon" sizes="76x76" href="{{asset ('img/apple-icon.png')}}"> --}}
+  {{-- <link rel="icon" type="image/png" href="{{asset ('img/favicon.png')}}"> --}}
 
   {{-- Trix Editor --}}
   <link href="{{ asset('css/trix.css') }}" rel="stylesheet">
   <script src="{{ asset('js/trix.js') }}"></script>
-
   <style>
     trix-toolbar [data-trix-button-group="file-tools"] {
       display: none;
     }
   </style>
-
-  <title>Raasaa Admin - @yield('title')</title>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  {{-- <link rel="apple-touch-icon" sizes="76x76" href="{{asset ('img/apple-icon.png')}}"> --}}
-  {{-- <link rel="icon" type="image/png" href="{{asset ('img/favicon.png')}}"> --}}
-
-  <!--     Fonts and icons     -->
+  
+  <!-- Bootstrap 5  -->
+  <link href="{{ asset('style/css/bootstrap.min.css') }}" rel="stylesheet">
+  <!-- Fonts and icons  -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   {{-- Bootstrap Icons --}}
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
@@ -49,6 +48,10 @@
   <link href="{{ asset('css/nucleo-svg.css') }}" rel="stylesheet" />
   <!-- CSS Files -->
   <link id="pagestyle" href="{{ asset('css/argon-dashboard.css') }}" rel="stylesheet" />
+  <!-- Datatables -->
+  <link href="{{ asset('datatables/datatables.min.css') }}" rel="stylesheet"/>
+  <link href="{{ asset('datatables/DataTables-1.13.1/datatables.bootstrap5.min.css') }}" rel="stylesheet"/>
+
 </head>
 
 <body class="g-sidenav-show bg-gray-100">
@@ -215,12 +218,26 @@
       </footer>
     </div>
   </main>
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <!-- My JS -->
+  <script src="{{ asset('/js/app.js') }}" defer></script>
+  <!-- Bootstrap 5 -->
+  <script src="{{ asset('/style/js/bootstrap.min.js') }}"></script>
+  <!-- Datatables -->
+  <script type="text/javascript" src="{{ asset('datatables/datatables.min.js') }}"></script>
+  <script type="text/javascript" src="{{ asset('datatables/DataTables-1.13.1/datatables.bootstrap5.min.js') }}"></script>
   <!--   Core JS Files   -->
+  @yield('js')
   <script src="{{ asset('js/core/popper.min.js') }}"></script>
   <script src="{{ asset('js/core/bootstrap.min.js') }}"></script>
   <script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}"></script>
   <script src="{{ asset('js/plugins/smooth-scrollbar.min.js') }}"></script>
   <script>
+    $(document).ready(function () {
+        $('#datatable').DataTable();
+    });
+
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
       var options = {
