@@ -147,7 +147,7 @@
             <span aria-hidden="true">×</span>
           </button>
         </div>
-        <form action="/web-raasaa-admin/type/store" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.type.store') }}" method="POST" enctype="multipart/form-data">
           <div class="modal-body">
             @csrf
             <div class="form-group">
