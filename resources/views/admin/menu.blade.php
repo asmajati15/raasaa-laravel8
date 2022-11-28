@@ -231,8 +231,8 @@
           <div class="form-group">
             <label for="deskripsi" class="col-form-label">Deskripsi</label>
             <div class="col">
-              <input id="deskripsi" type="hidden" name="deskripsi" value="{{ old('deskripsi') }}">
-              <trix-editor input="deskripsi"></trix-editor>
+              <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi"
+                value="{{ old('deskripsi') }}">
               @error('deskripsi')
                 <p class="text-danger">{{ $message }}</p>
               @enderror

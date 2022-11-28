@@ -52,10 +52,12 @@ var Menu = (function() {
 
 			var title = recipe.text(),
 				img = recipe.data( 'thumb' ),
+				harga = recipe.data( 'harga' ),
+				kategori = recipe.data( 'kategori' ),
 				description = recipe.parent().next().text(),
 				url = recipe.attr( 'href' );
 
-			var $modal = $( '<div class="rm-modal"><div class="rm-thumb" style="background-image: url(' + img + ')"></div><h5>' + title + '</h5><p>' + description + '</p><span class="rm-close-modal">x</span></div>' );
+			var $modal = $( '<div class="rm-modal"><div class="rm-thumb" style="background-image: url(' + img + ')"></div><h5>' + title + '</h5><p>' + kategori + '</p><p>' + description + '</p><h5>' + harga + '</h5><span class="rm-close-modal">x</span></div>' );
 
 			$modal.appendTo( $container );
 

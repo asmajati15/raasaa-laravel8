@@ -53,7 +53,7 @@
 									<dl>
 										@foreach ($menu as $menu)
       									@if ($menu->types->getAttribute('filters_id') == '2')
-										<dt><a href="#" class="rm-viewdetails" data-thumb="{{ asset('storage/' . $menu->gambar) }}">{{ $menu->nama }}</a></dt>
+										<dt><a href="#" class="rm-viewdetails" data-thumb="{{ asset('storage/' . $menu->gambar) }}" data-harga="{{ $menu->harga }}" data-kategori="{{ $menu->types->nama }}">{{ $menu->nama }}</a></dt>
 										<dd>{{ $menu->deskripsi }}</dd>
 										@endif
 										@endforeach
@@ -72,7 +72,7 @@
 									<dl>
 										@foreach ($menu1 as $menu)
       									@if ($menu->types->getAttribute('filters_id') == '1')
-										<dt><a href="#" class="rm-viewdetails" data-thumb="{{ asset('storage/' . $menu->gambar) }}">{{ $menu->nama }}</a></dt>
+										<dt><a href="#" class="rm-viewdetails" data-thumb="{{ asset('storage/' . $menu->gambar) }}" data-harga="{{ $menu->harga }}" data-kategori="{{ $menu->types->nama }}">{{ $menu->nama }}</a></dt>
 										<dd>{{ $menu->deskripsi }}</dd>
 										@endif
 										@endforeach
@@ -94,8 +94,8 @@
 									<h4>Desserts</h4>
 										@foreach ($menu2 as $menu)
       									@if ($menu->types->getAttribute('filters_id') == '3')
-										<dt><a href="#" class="rm-viewdetails" data-thumb="{{ asset('storage/' . $menu->gambar) }}">{{ $menu->nama }}</a></dt>
-										<dd>{{ $menu->deskripsi }}</dd>
+										<dt><a href="#" class="rm-viewdetails" data-thumb="{{ asset('storage/' . $menu->gambar) }}" data-harga="{{ $menu->harga }}" data-kategori="{{ $menu->types->nama }}">{{ $menu->nama }}</a></dt>
+										<dd style="margin-left: 0px">{{ $menu->deskripsi }}</dd>
 										@endif
 										@endforeach
 									{{-- <div class="rm-order">

@@ -92,7 +92,7 @@
             @enderror
           </div>
         </div>
-        <div class="row mb-3">
+        {{-- <div class="row mb-3">
           <label for="hari" class="col-sm-2 col-form-label">Hari Tersedia</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" id="hari" name="hari" value="{{ old('hari', $menu->hari) }}">
@@ -100,7 +100,7 @@
               <i>*khusus special menu</i>
             </div>
           </div>
-        </div>
+        </div> --}}
         {{-- <div class="row mb-3">
           <label for="waktu" class="col-sm-2 col-form-label">Waktu/Jam Tersedia</label>
           <div class="col">
@@ -119,9 +119,8 @@
         <div class="row mb-3">
           <label for="deskripsi" class="col-sm-2 col-form-label">Deskripsi</label>
           <div class="col-sm-10">
-            <input id="deskripsi" type="hidden" name="deskripsi" value="{{ old('deskripsi', $menu->deskripsi) }}"
-              required>
-            <trix-editor input="deskripsi"></trix-editor>
+            <input type="text" class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" autofocus
+              required value="{{ old('deskripsi', $menu->deskripsi) }}">
             @error('deskripsi')
               <p class="text-danger">{{ $message }}</p>
             @enderror
