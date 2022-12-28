@@ -257,7 +257,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn bg-gradient-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="submit" class="btn bg-gradient-primary">Tambah Kategori</button>
+            <button type="submit" class="btn bg-gradient-primary">Tambah Menu</button>
           </div>
         </form>
       </div>

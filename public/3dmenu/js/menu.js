@@ -7,6 +7,7 @@ var Menu = (function() {
 		$open = $cover.find('a.rm-button-open'),
 		$close = $right.find('span.rm-close'),
 		$details = $container.find( 'a.rm-viewdetails' ),
+		$detailsnot = $container.find( 'a.rm-viewdetails-not' ),
 
 		init = function() {
 
@@ -36,6 +37,14 @@ var Menu = (function() {
 				return false;
 
 			} );
+
+			$detailsnot.on( 'click', function( event ) {
+
+				$container.removeClass( 'rm-in' ).children( 'div.rm-modal' ).remove();
+				viewDetails( $( this ) );
+				return false;
+
+			} );
 			
 		},
 		openMenu = function() {
@@ -54,10 +63,12 @@ var Menu = (function() {
 				img = recipe.data( 'thumb' ),
 				harga = recipe.data( 'harga' ),
 				kategori = recipe.data( 'kategori' ),
+				tidak = recipe.data( 'tidak' ),
+				overlay = recipe.data( 'overlay' ),
 				description = recipe.parent().next().text(),
 				url = recipe.attr( 'href' );
 
-			var $modal = $( '<div class="rm-modal"><div class="rm-thumb" style="background-image: url(' + img + ')"></div><h5>' + title + '</h5><p>' + kategori + '</p><p>' + description + '</p><h5>' + harga + '</h5><span class="rm-close-modal">x</span></div>' );
+			var $modal = $( '<div class="rm-modal"><div class="rm-thumb" style="background-image: url(' + img + ')"></div><h5>' + title + '</h5><p><span>' + kategori + '</span></p><p>' + description + '</p><h5>' + harga + '</h5><div class=' + overlay + '><h2>' + tidak + '</h2></div><span class="rm-close-modal">x</span></div>' );
 
 			$modal.appendTo( $container );
 
