@@ -12,6 +12,34 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: "IbarraRealNova-Bold";
+    src: url('/public/fonts/IbarraRealNova-Bold.ttf') format("truetype");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "IbarraRealNova-Medium";
+    src: url('/public/fonts/IbarraRealNova-Medium.ttf') format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "IbarraRealNova-SemiBold";
+    src: url('/public/fonts/IbarraRealNova-SemiBold.ttf') format("truetype");
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "IbarraRealNova-Regular";
+    src: url('/public/fonts/IbarraRealNova-Regular.ttf') format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
 .rm-container {
     width: 33%;
     height: 700px;
@@ -202,7 +230,7 @@ a.rm-button-open,
 .rm-modal h5 {
     font-weight: 700;
     text-transform: uppercase;
-    font-family: "Arvo", Arial, sans-serif;
+    font-family: "IbarraRealNova-Bold";
 }
 
 .rm-logo {
@@ -217,12 +245,14 @@ a.rm-button-open,
 }
 
 .rm-content h2 {
+    font-family:"IbarraRealNova-Bold";
     letter-spacing: 2px;
     font-size: 26px;
     text-shadow: 1px 1px 0 #fff, 3px 3px 0 #e6b741;
 }
 
 .rm-content h3 {
+    font-family:"IbarraRealNova-Medium";
     font-size: 13px;
     margin: 40px 0;
     padding: 20px 40px;
@@ -249,7 +279,7 @@ a.rm-button-open,
 }
 
 a.rm-button-open {
-    color: #323b4c;
+    color: #7C7C32;
     font-size: 16px;
     line-height: 45px;
     margin: 10px auto;
@@ -258,11 +288,12 @@ a.rm-button-open {
 }
 
 a.rm-button-open:hover {
-    color: #e6b741;
+    color: #234C4A;
 }
 
 .rm-info p {
     line-height: 20px;
+    font-family: "IbarraRealNova-SemiBold";
 }
 
 .rm-content dl {
@@ -287,7 +318,7 @@ a.rm-button-open:hover {
     padding: 4px 5px 15px;
     line-height: 15px;
     color: #000;
-    font-weight: 400;
+    font-family:"IbarraRealNova-Regular";
 }
 
 .rm-content dl {
@@ -342,12 +373,13 @@ a.rm-viewdetails:before {
 .rm-modal p {
     font-size: 17px;
     font-weight: 600;
-    font-family: "Lora", serif;
+    font-family: "IbarraRealNova-SemiBold";
 }
 
 .rm-modal p span {
     font-size: 16px;
-    font-weight: 500;
+    font-weight:500;
+    font-family:"IbarraRealNova-Medium";
 }
 
 .rm-modal .overlay {
@@ -370,8 +402,7 @@ a.rm-viewdetails:before {
     width: 100%;
     text-align: center;
     transform: translate(-50%, -50%);
-    font-weight: 600;
-    font-family: "Lora", serif;
+    font-family:"IbarraRealNova-SemiBold";
 }
 
 .rm-modal .rm-thumb {
@@ -396,14 +427,14 @@ a.rm-viewdetails:before {
 
 a.rm-viewdetails,
 .rm-modal a {
-    color: #e6b741;
-    font-weight: 500;
+    color: #7C7C32;
+    font-family:"IbarraRealNova-Medium";
 }
 
 a.rm-viewdetails-not,
 .rm-modal a {
     color: #565656;
-    font-weight: 500;
+    font-family:"IbarraRealNova-Medium";
 }
 
 .rm-modal a {
@@ -413,7 +444,7 @@ a.rm-viewdetails-not,
 
 a.rm-viewdetails:hover,
 .rm-modal a:hover {
-    color: #000;
+    color: #234C4A;
 }
 
 .rm-close {

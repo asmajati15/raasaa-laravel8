@@ -29,7 +29,7 @@
 								<div class="rm-content">
 
 									{{-- <div class="rm-logo"> --}}
-										<img class="rm-logo" src="{{ asset('img/carousel-img0.jpg') }}" alt="">
+										<img class="rm-logo" src="{{ asset('img/carousel-img0.png') }}" alt="">
 									{{-- </div> --}}
 									<h2>Raasaa Resto</h2>
 									<h3>Fine Dining &amp; Gourmet Takeaway</h3>
