@@ -6,10 +6,11 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 use App\Models\Menu;
 use App\Models\Type;
-use App\Models\Drink;
 use App\Models\Filter;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -23,42 +24,53 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
         Filter::create([
-            'slug'          => 'makanan'
+            'slug'          => 'makanan',
+            'hide'          => 'Full-Menu'
         ]);
 
         Filter::create([
-            'slug'          => 'minuman'
+            'slug'          => 'minuman',
+            'hide'          => 'Full-Menu'
         ]);
 
         Filter::create([
-            'slug'          => 'special'
+            'slug'          => 'special',
+            'hide'          => 'Special-of-the-Day'
         ]);
 
         Type::create([
             'filters_id'    => 1,
-            'nama'          => 'Indonesian Taste',
-            'slug'          => 'indonesian-taste'
-        ]);
-
-        Type::create([
-            'filters_id'    => 2,
-            'nama'          => 'Fresh Juice',
-            'slug'          => 'fresh-juice'
-        ]);
-
-        Type::create([
-            'filters_id'    => 2,
-            'nama'          => 'Coffee',
-            'slug'          => 'coffee'
-        ]);
-
-        Type::create([
-            'filters_id'    => 3,
             'nama'          => 'Special of The Day',
-            'slug'          => 'special-of-the-day'
+            'slug'          => 'special-of-the-month'
         ]);
 
-        Menu::factory(12)->create();
+        User::create([
+            'is_administrator'    => 1,
+            'name'          => 'Asmajati Ananto',
+            'username'          => 'amnv15',
+            'email'          => 'asmajati.cooler15@gmail.com',
+            'password'          => Hash::make('Krb0g0r123')
+        ]);
+
+        // Type::create([
+        //     'filters_id'    => 2,
+        //     'nama'          => 'Fresh Juice',
+        //     'slug'          => 'fresh-juice'
+        // ]);
+
+        // Type::create([
+        //     'filters_id'    => 2,
+        //     'nama'          => 'Coffee',
+        //     'slug'          => 'coffee'
+        // ]);
+
+        // Type::create([
+        //     'filters_id'    => 3,
+        //     'nama'          => 'Special of The Day',
+        //     'slug'          => 'special-of-the-day'
+        // ]);
+
+        // Menu::factory(12)->create();
 
         /* Menu::create([
             'types_id'      => 1,

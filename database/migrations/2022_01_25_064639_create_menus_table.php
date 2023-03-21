@@ -19,11 +19,16 @@ class CreateMenusTable extends Migration
             // $table->foreignId('drinks_id');
             // $table->foreign('types_id')->references('id')->on('types')->onDelete('cascade');
             $table->foreignId('types_id');
+            $table->foreignId('availabilities_id');
             $table->string('nama');
             $table->string('slug')->unique();
             $table->text('deskripsi');
+            $table->string('gambar')->nullable();
             $table->string('harga');
-            $table->string('tersedia');
+            $table->integer('stok')->nullable();
+            $table->string('hari')->nullable();
+            $table->string('mulai')->nullable();
+            $table->string('sampai')->nullable();
             $table->timestamps();
         });
     }
