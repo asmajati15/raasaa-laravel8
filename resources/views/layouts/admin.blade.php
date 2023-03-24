@@ -56,7 +56,7 @@
 
 <body class="g-sidenav-show bg-gray-100">
   <div class="min-height-300 bg-default position-absolute w-100"></div>
-  <aside
+  <div
     class="sidenav bg-white navbar navbar-vertical navbar-expand-xs border-0 border-radius-xl my-3 fixed-start ms-4 "
     id="sidenav-main">
     <div class="sidenav-header">
@@ -121,9 +121,40 @@
             <span class="nav-link-text ms-1">Daftar Admin</span>
           </a>
         </li>
+        {{-- <li class="nav-item">
+          <h6 class="ps-4 ms-2 text-uppercase text-xs font-weight-bolder opacity-6">Account pages</h6>
+        </li> --}}
+        <hr class="horizontal dark mt-0">
+        <li class="nav-item">
+          <div class="d-flex align-items-center justify-content-center">
+          <form action="{{ route('logout.admin') }}" method="POST">
+            @csrf
+            <button type="submit" class="btn btn-danger">
+              Log Out
+              <i class="bi bi-box-arrow-right" style="font-size: 1rem; color: white;"></i>
+            </button>
+          </form>
+          </div>
+        </li>
+        {{-- <li class="nav-item">
+          <a class="nav-link {{ Request::is('web-raasaa-admin/user*') ? 'active' : '' }}"
+            href="{{ url('web-raasaa-admin/user') }}">
+            <div
+              class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+              <i class="fa fa-user avatar text-black text-sm opacity-10"></i>
+            </div>
+            <form action="{{ route('logout.admin') }}" method="POST">
+              @csrf
+              <button type="submit" class="btn btn-danger">
+                Log Out
+                <i class="bi bi-box-arrow-right" style="font-size: 1rem; color: white;"></i>
+              </button>
+            </form>
+          </a>
+        </li> --}}
       </ul>
     </div>
-  </aside>
+  </div>
   <main class="main-content position-relative border-radius-lg ">
     <!-- Navbar -->
     <nav class="navbar navbar-main navbar-expand-lg px-0 mx-4 shadow-none border-radius-xl " id="navbarBlur"
@@ -153,13 +184,13 @@
               </a>
             </li> --}}
             <li class="nav-item dropdown pe-2 d-flex align-items-center">
-              <a href="javascript:;" class="nav-link text-white p-0" id="dropdownMenuButton" data-bs-toggle="dropdown"
+              <a href="javascript:;" class="nav-link text-white p-0" data-bs-toggle="dropdown" id="navbarDropdownMenuLink2
                 aria-expanded="false">
                 <i class="fa fa-user cursor-pointer"></i>
               </a>
               <ul class="dropdown-menu  dropdown-menu-end  px-2 py-3 me-sm-n4" aria-labelledby="dropdownMenuButton">
                 <li class="mb-2">
-                  <a class="dropdown-item border-radius-md" href="javascript:;">
+                  <a class="dropdown-item border-radius-md">
                     <div class="d-flex py-1">
                       <div class="my-auto">
                         <i class="fa fa-user avatar avatar-sm  me-3 " style="color: black"></i>
@@ -220,6 +251,10 @@
   </main>
   <!-- JQuery -->
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <!-- Github buttons -->
+  <script async defer src="https://buttons.github.io/buttons.js'"></script>
+  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
+  <script src="{{ asset('js/argon-dashboard.min.js?v=2.0.3') }}" defer></script>
   <!-- My JS -->
   <script src="{{ asset('/js/app.js') }}" defer></script>
   <!-- Bootstrap 5 -->
@@ -246,10 +281,6 @@
       Scrollbar.init(document.querySelector('#sidenav-scrollbar'), options);
     }
   </script>
-  <!-- Github buttons -->
-  <script async defer src="https://buttons.github.io/buttons.js'"></script>
-  <!-- Control Center for Soft Dashboard: parallax effects, scripts for the example pages etc -->
-  <script src="{{ asset('js/argon-dashboard.min.js?v=2.0.3') }}"></script>
 </body>
 
 </html>

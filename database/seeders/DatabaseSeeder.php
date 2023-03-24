@@ -5,6 +5,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Availability;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Menu;
@@ -23,19 +24,37 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
 
+        Availability::create([
+            'nama'          => 'Tersedia',
+            'tersedia'          => 'Tersedia',
+            'slug'          => 'able'
+        ]);
+
+        Availability::create([
+            'nama'          => 'Tidak Tersedia',
+            'tersedia'          => 'Tidak Tersedia',
+            'slug'          => 'disabled'
+        ]);
+
+        Availability::create([
+            'nama'          => 'Tersembunyi',
+            'tersedia'          => 'Tidak Tersedia',
+            'slug'          => 'hidden'
+        ]);
+
         Filter::create([
-            'slug'          => 'makanan',
+            'slug'          => 'Drinks & Beverages',
             'hide'          => 'Full-Menu'
         ]);
 
         Filter::create([
-            'slug'          => 'minuman',
+            'slug'          => 'Main Courses',
             'hide'          => 'Full-Menu'
         ]);
 
         Filter::create([
-            'slug'          => 'special',
-            'hide'          => 'Special-of-the-Day'
+            'slug'          => 'Dessert',
+            'hide'          => 'Full-Menu'
         ]);
 
         Type::create([
